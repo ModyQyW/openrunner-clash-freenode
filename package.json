@@ -1,15 +1,19 @@
 {
   "name": "openrunner-clash-freenode",
-  "version": "1.0.50",
+  "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun src/index.ts"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@bogeychan/elysia-logger": "^0.0.17",
+    "@elysiajs/cors": "^0.8.0",
+    "date-fns": "^3.3.1",
+    "date-fns-tz": "^2.0.0",
+    "elysia": "^0.8.17",
+    "elysia-helmet": "^1.0.2"
   },
   "devDependencies": {
-    "bun-types": "latest"
-  },
-  "module": "src/index.js"
+    "bun-types": "^1.0.30"
+  }
 }
