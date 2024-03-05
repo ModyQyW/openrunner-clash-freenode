@@ -12,6 +12,9 @@ const app = new Elysia()
       level: "error",
     })
   )
+  .get("/", () => {
+    return "Hello Elysia! Use /clash for clash nodes and /v2ray for v2ray nodes.";
+  })
   .get("/clash", ({ set }) => {
     set.redirect = `https://freenode.openrunner.net/uploads/${getDateTime()}-clash.yaml`;
   })
