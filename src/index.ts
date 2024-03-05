@@ -21,7 +21,7 @@ const app = new Elysia()
   .get("/v2ray", ({ set }) => {
     set.redirect = `https://freenode.openrunner.net/uploads/${getDateTime()}-v2ray.txt`;
   })
-  .listen(3000);
+  .listen(process.env.PORT || 3000);
 
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
