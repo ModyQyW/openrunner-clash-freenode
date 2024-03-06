@@ -1,6 +1,7 @@
 {
   "name": "openrunner-clash-freenode",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
     "build": "bun build src/index.ts --target=node --minify --outdir=.zeabur/output/functions/index.func"
