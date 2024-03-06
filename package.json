@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "build": "bun build src/index.ts --target=node --minify --outdir=.zeabur/output/functions/index.func"
+    "build": "bun build src/index.ts --target=node --minify --outdir=.zeabur/output/functions/index.func && cpx package.json .zeabur/output/functions/index.func"
   },
   "dependencies": {
     "@bogeychan/elysia-logger": "^0.0.17",
@@ -15,7 +15,8 @@
     "elysia-helmet": "^1.0.2"
   },
   "devDependencies": {
-    "bun-types": "^1.0.30"
+    "bun-types": "^1.0.30",
+    "cpx2": "^7.0.1"
   },
   "module": "src/index.js"
 }
