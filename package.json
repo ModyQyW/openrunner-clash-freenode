@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "build": "rimraf .zeabur && bun build src/index.ts --minify --target=node --outfile=.zeabur/output/functions/index.func/index.mjs && cpx package.json .zeabur/output/functions/index.func"
+    "build": "rimraf .zeabur && bun build src/index.ts --target=node --outfile=.zeabur/output/functions/index.func/index.mjs && cpx package.json .zeabur/output/functions/index.func"
   },
   "dependencies": {
     "@bogeychan/elysia-logger": "^0.0.17",
