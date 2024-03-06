@@ -1,15 +1,3 @@
-# Elysia with Bun runtime
+# Nitro starter
 
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
-```bash
-bun create elysia ./elysia-example
-```
-
-## Development
-To start the development server run:
-```bash
-bun run dev
-```
-
-Open http://localhost:3000/ with your browser to see the result.
+Look at the [nitro quick start](https://nitro.unjs.io/guide#quick-start) to learn more how to get started.

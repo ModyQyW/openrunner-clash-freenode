@@ -1,23 +1,14 @@
 {
-  "name": "openrunner-clash-freenode",
-  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "dev": "bun run --watch src/index.ts",
-    "build": "rimraf .zeabur && bun build src/index.ts --target=node --outfile=.zeabur/output/functions/index.func/index.mjs && cpx package.json .zeabur/output/functions/index.func"
-  },
-  "dependencies": {
-    "@bogeychan/elysia-logger": "^0.0.17",
-    "@bogeychan/elysia-polyfills": "^0.6.4",
-    "@elysiajs/cors": "^0.8.0",
-    "date-fns": "^2.30.0",
-    "date-fns-tz": "^2.0.0",
-    "elysia": "^0.8.17",
-    "elysia-helmet": "^1.0.2"
+    "build": "nitro build",
+    "dev": "nitro dev",
+    "prepare": "nitro prepare",
+    "preview": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "bun-types": "^1.0.30",
-    "cpx2": "^7.0.1",
-    "rimraf": "^5.0.5"
-  },
-  "module": "src/index.js"
+    "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0",
+    "nitropack": "latest"
+  }
 }
