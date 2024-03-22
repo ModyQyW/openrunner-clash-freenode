@@ -1,4 +1,5 @@
 {
+  "name": "openrunner-clash-freenode",
   "private": true,
   "scripts": {
     "build": "nitro build",
@@ -7,8 +8,8 @@
     "preview": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "date-fns": "^2.30.0",
-    "date-fns-tz": "^2.0.0",
-    "nitropack": "latest"
-  }
+    "dayjs": "^1.11.10",
+    "nitropack": "^2.9.4"
+  },
+  "packageManager": "pnpm@8.15.5"
 }
