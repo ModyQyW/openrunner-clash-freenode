@@ -1,3 +1,7 @@
-# Nitro starter
+# openrunner-clash-freenode
 
-Look at the [nitro quick start](https://nitro.unjs.io/guide#quick-start) to learn more how to get started.
+This is a simple service built with nitro that requests [OpenRunner/clash-freenode](https://github.com/OpenRunner/clash-freenode) for the latest clash / v2ray nodes, for learning purposes only.
+
+Request /clash for latest clash nodes and /v2ray for latest v2ray nodes.
+
+- Zeabur hosted: <https://modyqyw-openrunner-clash-freenode.zeabur.app/>
