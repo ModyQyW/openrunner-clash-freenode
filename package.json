@@ -8,7 +8,8 @@
     "preview": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "dayjs": "^1.11.10",
+    "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.1",
     "nitropack": "^2.9.4"
   },
   "packageManager": "pnpm@8.15.5"
