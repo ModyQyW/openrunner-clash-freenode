@@ -1,12 +1,15 @@
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
+import { format, parseISO, sub, formatISO, parse } from "date-fns";
+import { zonedTimeToUtc } from "date-fns-tz";
 
-dayjs.extend(utc);
-dayjs.extend(timezone);
+export function getDate(dateTime: string, iso8601 = true) {
+  const parsed = iso8601
+    ? parseISO(dateTime)
+    : parse(dateTime, "yyyyMMdd", new Date());
+  return zonedTimeToUtc(parsed, "Asia/Shanghai");
+}
 
-export function getDate(dateTime: string) {
-  return dayjs(dateTime).tz("Asia/Shanghai").format("YYYYMMDD");
+export function formatDate(date: Date, iso8601 = true) {
+  return iso8601 ? formatISO(date) : format(date, "yyyyMMdd");
 }
 
 export async function fetchLastUpdated() {
@@ -29,18 +32,26 @@ export function getUrl(fileType: "clash" | "v2ray", date: string) {
   return `${baseUrl}/${date}-${fileType}.${ext}`;
 }
 
-export async function fetchFile(fileType: "clash" | "v2ray", dateTime: string) {
-  let url = getUrl(fileType, getDate(dateTime));
+export async function fetchFile(
+  fileType: "clash" | "v2ray",
+  dateTime: string
+): Promise<Blob> {
+  let url = getUrl(fileType, formatDate(getDate(dateTime), false));
   console.log(`Fetching ${url}`);
-  return $fetch(url, {
-    responseType: "blob",
-  }).catch((error) => {
-    console.error(error);
-    url = getUrl(
-      fileType,
-      dayjs(getDate(dateTime), "YYYYMMDD").subtract(1, "day").format("YYYYMMDD")
-    );
-    console.log(`Fetching ${url}`);
-    return $fetch(url, { responseType: "blob" });
-  });
+  try {
+    const response = await $fetch<Blob>(url, {
+      responseType: "blob",
+    });
+    const isBlob = response instanceof Blob;
+    if (!isBlob || response.size >= 1) return response;
+    // No nodes => request prev day
+    if (response.size < 1)
+      return fetchFile(
+        fileType,
+        formatDate(sub(getDate(dateTime), { days: 1 }))
+      );
+  } catch (error) {
+    // Not exists => request prev day
+    return fetchFile(fileType, formatDate(sub(getDate(dateTime), { days: 1 })));
+  }
 }
