@@ -4,5 +4,8 @@ This is a simple service built with [nitro](https://nitro.unjs.io/) that request
 
 Request /clash for latest clash nodes and /v2ray for latest v2ray nodes.
 
-- Netlify hosted: <https://openrunner-clash-freenode.netlify.app/>
-- Vercel hosted: <https://openrunner-clash-freenode.vercel.app/>
+Online demo hosted on:
+
+- [Cloudflare](https://openrunner-clash-freenode.pages.dev)
+- [Netlify](https://openrunner-clash-freenode.netlify.app/)
+- [Vercel](https://openrunner-clash-freenode.vercel.app/)
