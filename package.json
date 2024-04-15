@@ -8,9 +8,9 @@
     "preview": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "date-fns": "^2.30.0",
-    "date-fns-tz": "^2.0.1",
-    "nitropack": "^2.9.5"
+    "date-fns": "^3.6.0",
+    "date-fns-tz": "^3.0.1",
+    "nitropack": "^2.9.6"
   },
-  "packageManager": "pnpm@8.15.5"
+  "packageManager": "pnpm@8.15.7"
 }
