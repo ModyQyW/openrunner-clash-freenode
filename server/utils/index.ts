@@ -1,11 +1,11 @@
 import { format, parseISO, sub, formatISO, parse } from "date-fns";
-import { zonedTimeToUtc } from "date-fns-tz";
+import { fromZonedTime } from "date-fns-tz";
 
 export function getDate(dateTime: string, iso8601 = true) {
   const parsed = iso8601
     ? parseISO(dateTime)
     : parse(dateTime, "yyyyMMdd", new Date());
-  return zonedTimeToUtc(parsed, "Asia/Shanghai");
+  return fromZonedTime(parsed, "Asia/Shanghai");
 }
 
 export function formatDate(date: Date, iso8601 = true) {
