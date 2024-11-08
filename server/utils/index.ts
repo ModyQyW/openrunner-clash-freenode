@@ -1,15 +1,16 @@
 import { format, parseISO, sub, formatISO, parse } from "date-fns";
-import { fromZonedTime } from "date-fns-tz";
+import { tz } from "@date-fns/tz";
+
+const timezone = tz("Asia/Shanghai");
 
 export function getDate(dateTime: string, iso8601 = true) {
-  const parsed = iso8601
-    ? parseISO(dateTime)
-    : parse(dateTime, "yyyyMMdd", new Date());
-  return fromZonedTime(parsed, "Asia/Shanghai");
+  return iso8601 ? parseISO(dateTime) : parse(dateTime, "yyyyMMdd", new Date());
 }
 
 export function formatDate(date: Date, iso8601 = true) {
-  return iso8601 ? formatISO(date) : format(date, "yyyyMMdd");
+  return iso8601
+    ? formatISO(date, { in: timezone })
+    : format(date, "yyyyMMdd", { in: timezone });
 }
 
 export async function fetchLastUpdated() {
