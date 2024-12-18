@@ -1,5 +1,5 @@
-import { format, parseISO, sub, formatISO, parse } from "date-fns";
 import { tz } from "@date-fns/tz";
+import { format, formatISO, parse, parseISO, sub } from "date-fns";
 
 const timezone = tz("Asia/Shanghai");
 
@@ -28,7 +28,7 @@ export async function fetchLastUpdated() {
 }
 
 export function getUrl(fileType: "clash" | "v2ray", date: string) {
-  const baseUrl = `https://freenode.openrunner.net/uploads`;
+  const baseUrl = "https://freenode.openrunner.net/uploads";
   const ext = fileType === "clash" ? "yaml" : "txt";
   return `${baseUrl}/${date}-${fileType}.${ext}`;
 }
@@ -37,7 +37,7 @@ export async function fetchFile(
   fileType: "clash" | "v2ray",
   dateTime: string
 ): Promise<Blob> {
-  let url = getUrl(fileType, formatDate(getDate(dateTime), false));
+  const url = getUrl(fileType, formatDate(getDate(dateTime), false));
   console.log(`Fetching ${url}`);
   try {
     const response = await $fetch<Blob>(url, {
@@ -51,7 +51,7 @@ export async function fetchFile(
         fileType,
         formatDate(sub(getDate(dateTime), { days: 1 }))
       );
-  } catch (error) {
+  } catch {
     // Not exists => request prev day
     return fetchFile(fileType, formatDate(sub(getDate(dateTime), { days: 1 })));
   }
